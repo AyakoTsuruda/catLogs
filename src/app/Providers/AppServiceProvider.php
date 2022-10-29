@@ -6,6 +6,15 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+
+    public $singletons = [
+        // リポジトリークラス
+        \App\Contracts\Repositories\User::class => \App\Repositories\User::class,
+
+        // サービスクラス
+        \App\Contracts\Services\User::class => \App\Services\User::class
+    ];
+
     /**
      * Register any application services.
      *
@@ -13,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+
     }
 
     /**

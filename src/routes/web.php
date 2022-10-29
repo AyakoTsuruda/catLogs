@@ -33,14 +33,25 @@ require __DIR__.'/auth.php';
 /**
  * 管理者メニュー
  */
-require __DIR__ . '/administrator.php';
+Route::namespace('administrator')
+    ->prefix('administrator')
+    ->as('administrator.')
+    ->middleware('auth')
+    ->group(base_path('routes/administrator.php'));
 
 /**
  * メンバーメニュー
  */
-require __DIR__ . '/member.php';
+Route::namespace('member')
+    ->prefix('member')
+    ->as('member.')
+    ->middleware('auth')
+    ->group(base_path('routes/member.php'));
 
 /**
  * ユーザーメニュー
  */
-require __DIR__ . '/user.php';
+Route::namespace('user')
+    ->as('.user.')
+    ->name('user')
+    ->group(base_path('routes/user.php'));
